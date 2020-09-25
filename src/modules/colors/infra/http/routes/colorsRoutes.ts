@@ -6,8 +6,9 @@ import ColorsController from '../controllers/ColorsController';
 const colorsRouter = Router();
 const colorsController = new ColorsController();
 
-//colorsRouter.use(authenticated);
+// colorsRouter.use(authenticated);
 
 colorsRouter.post('/', colorsController.create);
+colorsRouter.get('/', colorsController.index);
 
 export default colorsRouter;

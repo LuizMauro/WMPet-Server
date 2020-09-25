@@ -12,6 +12,12 @@ class ColorsRepository implements IColorsRepository {
     this.ormRepository = getRepository(Colors);
   }
 
+  public async findAll(): Promise<Colors[] | []> {
+    const colors = await this.ormRepository.find();
+
+    return colors || [];
+  }
+
   public async findById(id: string): Promise<Colors | undefined> {
     const color = await this.ormRepository.findOne({ where: { colID: id } });
 
