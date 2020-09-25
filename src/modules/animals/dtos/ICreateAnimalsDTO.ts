@@ -1,4 +1,10 @@
+import User from '@modules/users/infra/typeorm/entities/User';
+
 export default interface ICreateAnimalsDTO {
-  name: string;
-  userID: string;
+  aniName: string;
+  userID: User;
+  aniGenre: string;
+  aniSize: string;
+  aniSpecies: boolean;
+  aniDescription: string;
 }

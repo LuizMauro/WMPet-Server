@@ -13,12 +13,38 @@ export default class CreateAnimals1600722217694 implements MigrationInterface {
             generationStrategy: 'uuid',
           },
           {
-            name: 'name',
+            name: 'aniName',
+            type: 'varchar',
+          },
+          {
+            name: 'aniGenre',
+            type: 'varchar',
+          },
+          {
+            name: 'aniSize',
+            type: 'varchar',
+          },
+          {
+            name: 'aniSpecies',
+            type: 'boolean',
+          },
+          {
+            name: 'aniDescription',
             type: 'varchar',
           },
           {
             name: 'userID',
             type: 'varchar',
+          },
+          {
+            name: 'aniDateCreated',
+            type: 'timestamp',
+            default: 'now()',
+          },
+          {
+            name: 'aniDateUpdated',
+            type: 'timestamp',
+            default: 'now()',
           },
         ],
         foreignKeys: [

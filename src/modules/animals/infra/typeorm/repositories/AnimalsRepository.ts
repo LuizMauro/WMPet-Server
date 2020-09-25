@@ -3,39 +3,39 @@ import { getRepository, Repository } from 'typeorm';
 import IAnimalsRepository from '@modules/animals/repositories/IAnimalsRepository';
 import ICreateAnimalsDTO from '@modules/animals/dtos/ICreateAnimalsDTO';
 
-import Animals from '../entities/Animals';
+import Animal from '../entities/Animals';
 
 class AnimalsRepository implements IAnimalsRepository {
-  private ormRepository: Repository<Animals>;
+  private ormRepository: Repository<Animal>;
 
   constructor() {
-    this.ormRepository = getRepository(Animals);
+    this.ormRepository = getRepository(Animal);
   }
 
-  public async findById(id: string): Promise<Animals | undefined> {
-    const animal = await this.ormRepository.findOne({ where: { aniID: id } });
-
-    return animal;
-  }
-
-  public async findByEmail(email: string): Promise<Animals | undefined> {
-    const animal = await this.ormRepository.findOne({
-      where: { useEmail: email },
+  public async create({
+    aniName,
+    aniGenre,
+    aniSize,
+    aniSpecies,
+    aniDescription,
+    userID,
+  }: ICreateAnimalsDTO): Promise<Animal> {
+    const animal = this.ormRepository.create({
+      aniName,
+      aniGenre,
+      aniSize,
+      aniSpecies,
+      aniDescription,
+      userID,
     });
-
-    return animal;
-  }
-
-  public async create({ name, userID }: ICreateAnimalsDTO): Promise<Animals> {
-    const animal = this.ormRepository.create({ name, userID });
 
     await this.ormRepository.save(animal);
 
     return animal;
   }
 
-  public async save(user: Animals): Promise<Animals> {
-    return this.ormRepository.save(user);
+  public async save(animal: Animal): Promise<Animal> {
+    return this.ormRepository.save(animal);
   }
 }
 
