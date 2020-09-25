@@ -1,5 +1,6 @@
 import User from '@modules/users/infra/typeorm/entities/User';
 import Color from '@modules/colors/infra/typeorm/entities/Colors';
+import Race from '@modules/races/infra/typeorm/entities/Race';
 
 export default interface ICreateAnimalsDTO {
   aniName: string;
@@ -9,4 +10,5 @@ export default interface ICreateAnimalsDTO {
   aniSpecies: boolean;
   aniDescription: string;
   colID: Color;
+  racID: Race;
 }

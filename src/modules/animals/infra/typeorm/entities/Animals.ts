@@ -10,6 +10,7 @@ import {
 
 import User from '@modules/users/infra/typeorm/entities/User';
 import Color from '@modules/colors/infra/typeorm/entities/Colors';
+import Race from '@modules/races/infra/typeorm/entities/Race';
 
 @Entity('ani_animals')
 class Animals {
@@ -38,6 +39,10 @@ class Animals {
   @ManyToOne(() => Color, { eager: true })
   @JoinColumn({ name: 'colID' })
   colID: Color;
+
+  @ManyToOne(() => Race, { eager: true })
+  @JoinColumn({ name: 'racID' })
+  racID: Race;
 
   @CreateDateColumn()
   aniDateCreated: Date;
