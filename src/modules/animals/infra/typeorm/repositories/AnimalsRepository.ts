@@ -12,6 +12,12 @@ class AnimalsRepository implements IAnimalsRepository {
     this.ormRepository = getRepository(Animal);
   }
 
+  public async findAll(): Promise<Animal[] | []> {
+    const animal = await this.ormRepository.find();
+
+    return animal || [];
+  }
+
   public async create({
     aniName,
     aniGenre,
