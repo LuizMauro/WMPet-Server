@@ -8,5 +8,6 @@ const racesController = new RacesController();
 // racesController.use(authenticated);
 
 racesRouter.post('/', racesController.create);
+racesRouter.get('/', racesController.index);
 
 export default racesRouter;

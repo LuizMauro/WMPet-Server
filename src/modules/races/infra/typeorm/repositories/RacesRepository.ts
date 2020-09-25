@@ -12,6 +12,12 @@ class RacesRepository implements IRacesRepository {
     this.ormRepository = getRepository(Races);
   }
 
+  public async findAll(): Promise<Races[] | []> {
+    const races = await this.ormRepository.find();
+
+    return races || [];
+  }
+
   public async findById(id: string): Promise<Races | undefined> {
     const color = await this.ormRepository.findOne({ where: { racID: id } });
 
