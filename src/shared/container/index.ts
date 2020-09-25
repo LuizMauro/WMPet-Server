@@ -14,6 +14,9 @@ import ContactsRepository from '@modules/contacts/infra/typeorm/repositories/Con
 import IRacesRepository from '@modules/races/repositories/IRacesRepository';
 import RacesRepository from '@modules/races/infra/typeorm/repositories/RacesRepository';
 
+import IFursRepository from '@modules/furs/repositories/IFursRepository';
+import FursRepository from '@modules/furs/infra/typeorm/repositories/FursRepository';
+
 container.registerSingleton<IusersRepository>(
   'UsersRepository',
   UsersRepository,
@@ -33,7 +36,10 @@ container.registerSingleton<IRacesRepository>(
   'RacesRepository',
   RacesRepository,
 );
+
 container.registerSingleton<IContactsRepository>(
   'ContactRepository',
   ContactsRepository,
-)
+);
+
+container.registerSingleton<IFursRepository>('FurRepository', FursRepository);
