@@ -8,6 +8,8 @@ import AnimalsRepository from '@modules/animals/infra/typeorm/repositories/Anima
 
 import IColorsRepository from '@modules/colors/repositories/IColorsRepository';
 import ColorsRepository from '@modules/colors/infra/typeorm/repositories/ColorsRepository';
+import IContactsRepository from '@modules/contacts/repositories/IContactsRepository';
+import ContactsRepository from '@modules/contacts/infra/typeorm/repositories/ContactsRepository';
 
 import IRacesRepository from '@modules/races/repositories/IRacesRepository';
 import RacesRepository from '@modules/races/infra/typeorm/repositories/RacesRepository';
@@ -31,3 +33,7 @@ container.registerSingleton<IRacesRepository>(
   'RacesRepository',
   RacesRepository,
 );
+container.registerSingleton<IContactsRepository>(
+  'ContactRepository',
+  ContactsRepository,
+)
