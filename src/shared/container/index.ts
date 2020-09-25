@@ -9,6 +9,9 @@ import AnimalsRepository from '@modules/animals/infra/typeorm/repositories/Anima
 import IColorsRepository from '@modules/colors/repositories/IColorsRepository';
 import ColorsRepository from '@modules/colors/infra/typeorm/repositories/ColorsRepository';
 
+import IRacesRepository from '@modules/races/repositories/IRacesRepository';
+import RacesRepository from '@modules/races/infra/typeorm/repositories/RacesRepository';
+
 container.registerSingleton<IusersRepository>(
   'UsersRepository',
   UsersRepository,
@@ -22,4 +25,9 @@ container.registerSingleton<IAnimalsRepository>(
 container.registerSingleton<IColorsRepository>(
   'ColorsRepository',
   ColorsRepository,
+);
+
+container.registerSingleton<IRacesRepository>(
+  'RacesRepository',
+  RacesRepository,
 );

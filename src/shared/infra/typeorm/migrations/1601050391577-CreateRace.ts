@@ -4,7 +4,7 @@ export default class CreateRace1601050391577 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'rac_race',
+        name: 'rac_races',
         columns: [
           {
             name: 'racID',
@@ -17,7 +17,7 @@ export default class CreateRace1601050391577 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'ractType',
+            name: 'racType',
             type: 'boolean',
           },
           {
@@ -36,6 +36,6 @@ export default class CreateRace1601050391577 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('rac_Race');
+    await queryRunner.dropTable('rac_races');
   }
 }

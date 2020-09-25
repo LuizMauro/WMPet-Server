@@ -6,19 +6,22 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('col_colors')
-class Colors {
+@Entity('rac_races')
+class Race {
   @PrimaryGeneratedColumn('uuid')
-  colID: string;
+  racID: string;
 
   @Column()
-  colDescription: string;
+  racDescription: string;
+
+  @Column()
+  racType: boolean;
 
   @CreateDateColumn()
-  colDateCreated: Date;
+  racDateCreated: Date;
 
   @UpdateDateColumn()
-  colDateUpdated: Date;
+  racDateUpdated: Date;
 }
 
-export default Colors;
+export default Race;
