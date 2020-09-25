@@ -2,6 +2,7 @@ import { injectable, inject } from 'tsyringe';
 
 import IAnimalsRepository from '@modules/animals/repositories/IAnimalsRepository';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
+import IColorsRespository from '@modules/colors/repositories/IColorsRepository';
 
 import AppError from '@shared/errors/AppErros';
 import Animals from '../infra/typeorm/entities/Animals';
@@ -13,6 +14,7 @@ interface IRequest {
   aniSize: string;
   aniSpecies: boolean;
   aniDescription: string;
+  colID: string;
 }
 
 @injectable()
@@ -23,6 +25,9 @@ class CreateAnimalsService {
 
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
+
+    @inject('ColorsRepository')
+    private colorsRepository: IColorsRespository,
   ) {}
 
   public async execute({
@@ -32,13 +37,17 @@ class CreateAnimalsService {
     aniSize,
     aniSpecies,
     userID,
+    colID,
   }: IRequest): Promise<Animals> {
-    console.log(userID);
     const user = await this.usersRepository.findById(userID);
-    console.log(user);
+    const color = await this.colorsRepository.findById(colID);
 
     if (!user) {
-      throw new AppError('Customer does not exists');
+      throw new AppError('User does not exists');
+    }
+
+    if (!color) {
+      throw new AppError('Color does not exists');
     }
 
     const animal = await this.animalsRepository.create({
@@ -48,6 +57,7 @@ class CreateAnimalsService {
       aniSize,
       aniSpecies,
       userID: user,
+      colID: color,
     });
 
     return animal;

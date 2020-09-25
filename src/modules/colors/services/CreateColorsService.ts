@@ -13,14 +13,9 @@ class CreateColorsService {
   constructor(
     @inject('ColorsRepository')
     private ColorsRepository: IColorsRepository,
-
   ) {}
 
-  public async execute({
-    colDescription
-  }: IRequest): Promise<Colors> {
-    
-   
+  public async execute({ colDescription }: IRequest): Promise<Colors> {
     const color = await this.ColorsRepository.create({
       colDescription,
     });

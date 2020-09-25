@@ -12,9 +12,13 @@ class ColorsRepository implements IColorsRepository {
     this.ormRepository = getRepository(Colors);
   }
 
-  public async create({
-    colDescription
-  }: ICreateColorsDTO): Promise<Colors> {
+  public async findById(id: string): Promise<Colors | undefined> {
+    const color = await this.ormRepository.findOne({ where: { colID: id } });
+
+    return color;
+  }
+
+  public async create({ colDescription }: ICreateColorsDTO): Promise<Colors> {
     const color = this.ormRepository.create({
       colDescription,
     });
