@@ -16,11 +16,11 @@ class CreateFursService {
   ) {}
 
   public async execute({ furDescription }: IRequest): Promise<Furs> {
-    const animal = await this.fursRepository.create({
+    const fur = await this.fursRepository.create({
       furDescription,
     });
 
-    return animal;
+    return fur;
   }
 }
 

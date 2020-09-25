@@ -21,6 +21,7 @@ export default class AnimalsController {
       aniSpecies,
       colID,
       racID,
+      furID,
     } = request.body;
 
     const createAnimals = container.resolve(CreateAnimalsService);
@@ -34,6 +35,7 @@ export default class AnimalsController {
       userID: request.user.useID,
       colID,
       racID,
+      furID,
     });
 
     return response.json(classToPlain(animal));

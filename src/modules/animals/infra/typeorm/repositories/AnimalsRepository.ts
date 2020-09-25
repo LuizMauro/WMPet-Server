@@ -27,6 +27,7 @@ class AnimalsRepository implements IAnimalsRepository {
     userID,
     colID,
     racID,
+    furID,
   }: ICreateAnimalsDTO): Promise<Animal> {
     const animal = this.ormRepository.create({
       aniName,
@@ -37,6 +38,7 @@ class AnimalsRepository implements IAnimalsRepository {
       userID,
       colID,
       racID,
+      furID,
     });
 
     await this.ormRepository.save(animal);

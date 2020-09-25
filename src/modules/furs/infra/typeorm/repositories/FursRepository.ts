@@ -12,6 +12,12 @@ class FursRepository implements IFursRepository {
     this.ormRepository = getRepository(Furs);
   }
 
+  public async findById(id: string): Promise<Furs | undefined> {
+    const fur = await this.ormRepository.findOne({ where: { furID: id } });
+
+    return fur;
+  }
+
   public async findAll(): Promise<Furs[] | []> {
     const furs = await this.ormRepository.find();
 
