@@ -3,10 +3,9 @@ import { injectable, inject } from 'tsyringe';
 import IContactsRepository from '@modules/contacts/repositories/IContactsRepository';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 
-
 import AppError from '@shared/errors/AppErros';
-import Contacts from '../infra/typeorm/entities/Contacts';
 import User from '@modules/users/infra/typeorm/entities/User';
+import Contacts from '../infra/typeorm/entities/Contacts';
 
 interface IRequest {
   conDescription: string;
@@ -22,18 +21,15 @@ class CreateContactsService {
 
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
-
   ) {}
 
   public async execute({
-     conDescription,
-     conType,
-     useID,
-    }: IRequest): Promise<Contacts> {
-
+    conDescription,
+    conType,
+    useID,
+  }: IRequest): Promise<Contacts> {
     const user = await this.usersRepository.findById(useID);
 
-    
     if (!user) {
       throw new AppError('User does not exists');
     }

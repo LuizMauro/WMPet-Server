@@ -3,6 +3,7 @@ import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppErros';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
+import IContactRepository from '@modules/contacts/repositories/IContactsRepository';
 
 import User from '../infra/typeorm/entities/User';
 
@@ -10,6 +11,8 @@ interface IRequest {
   useName: string;
   useEmail: string;
   usePasswordHash: string;
+  conDescription: string;
+  conType: boolean;
 }
 
 @injectable()
@@ -17,12 +20,17 @@ class CreateUserService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
+
+    @inject('ContactRepository')
+    private contactRepository: IContactRepository,
   ) {}
 
   public async execute({
     useName,
     useEmail,
     usePasswordHash,
+    conDescription,
+    conType,
   }: IRequest): Promise<User> {
     const checkUserExists = await this.usersRepository.findByEmail(useEmail);
 
@@ -36,6 +44,12 @@ class CreateUserService {
       useName,
       useEmail,
       usePasswordHash: hashedPassword,
+    });
+
+    await this.contactRepository.create({
+      conDescription,
+      conType,
+      useID: user,
     });
 
     return user;
