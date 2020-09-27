@@ -6,10 +6,7 @@ import User from '@modules/users/infra/typeorm/entities/User';
 
 export default class ContactsController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const {
-     conDescription,
-     conType,
-    } = request.body;
+    const { conDescription, conType } = request.body;
 
     const createContacts = container.resolve(CreateContactsService);
 

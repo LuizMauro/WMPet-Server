@@ -4,7 +4,7 @@ import IContactsRepository from '@modules/contacts/repositories/IContactsReposit
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 
 import AppError from '@shared/errors/AppErros';
-import User from '@modules/users/infra/typeorm/entities/User';
+
 import Contacts from '../infra/typeorm/entities/Contacts';
 
 interface IRequest {

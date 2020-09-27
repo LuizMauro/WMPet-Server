@@ -18,10 +18,10 @@ class ContactsRepository implements IContactsRepository {
     return contact;
   }
 
-  public async create({ 
+  public async create({
     conDescription,
     conType,
-    useID, 
+    useID,
   }: ICreateContactsDTO): Promise<Contacts> {
     const contact = this.ormRepository.create({
       conDescription,
