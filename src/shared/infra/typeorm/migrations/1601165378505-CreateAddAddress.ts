@@ -1,43 +1,55 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateContacts1601050579871 implements MigrationInterface {
+export class CreateAddAddress1601165378505 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'con_contacts',
+        name: 'add_address',
         columns: [
           {
-            name: 'conID',
+            name: 'addID',
             type: 'varchar',
             isPrimary: true,
             generationStrategy: 'uuid',
           },
           {
-            name: 'conDescription',
+            name: 'addCEP',
             type: 'varchar',
           },
           {
-            name: 'conType',
-            type: 'boolean',
+            name: 'addStreet',
+            type: 'varchar',
+          },
+          {
+            name: 'addDistrict',
+            type: 'varchar',
+          },
+          {
+            name: 'addCity',
+            type: 'varchar',
+          },
+          {
+            name: 'addState',
+            type: 'varchar',
           },
           {
             name: 'useID',
             type: 'varchar',
           },
           {
-            name: 'conDateCreated',
+            name: 'addDateCreated',
             type: 'timestamp',
             default: 'now()',
           },
           {
-            name: 'conDateUpdated',
+            name: 'addDateUpdated',
             type: 'timestamp',
             default: 'now()',
           },
         ],
         foreignKeys: [
           {
-            name: 'ForeignUserContact',
+            name: 'ForeignUserAddress',
             columnNames: ['useID'],
             referencedTableName: 'use_users',
             referencedColumnNames: ['useID'],
@@ -50,6 +62,6 @@ export default class CreateContacts1601050579871 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('con_contacts');
+    await queryRunner.dropTable('add_address');
   }
 }

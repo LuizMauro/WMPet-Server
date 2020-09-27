@@ -7,6 +7,7 @@ import ColorsRouter from '@modules/colors/infra/http/routes/colorsRoutes';
 import RacesRouter from '@modules/races/infra/http/routes/racesRoutes';
 import ContactRouter from '@modules/contacts/infra/http/routes/contactsRoutes';
 import FursRouter from '@modules/furs/infra/http/routes/fursRoutes';
+import AddressesRouter from '@modules/addresses/infra/http/routes/addressesRoutes';
 
 const routes = Router();
 
@@ -21,5 +22,7 @@ routes.use('/colors', ColorsRouter);
 routes.use('/races', RacesRouter);
 
 routes.use('/furs', FursRouter);
+
+routes.use('/addresses', AddressesRouter);
 
 export default routes;
