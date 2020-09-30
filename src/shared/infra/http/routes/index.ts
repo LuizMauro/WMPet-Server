@@ -10,6 +10,8 @@ import FursRouter from '@modules/furs/infra/http/routes/fursRoutes';
 import AddressesRouter from '@modules/addresses/infra/http/routes/addressesRoutes';
 import SearchAnimalsRoutes from '@modules/search_animals/infra/http/routes/searchAnimalsRoutes';
 
+import PicturesRouter from '@modules/pictures/infra/http/routes/picturesRoutes';
+
 const routes = Router();
 
 routes.use('/users', usersRouter);
@@ -27,5 +29,7 @@ routes.use('/furs', FursRouter);
 routes.use('/addresses', AddressesRouter);
 
 routes.use('/search-animals', SearchAnimalsRoutes);
+
+routes.use('/pictures', PicturesRouter);
 
 export default routes;

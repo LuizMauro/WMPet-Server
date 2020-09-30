@@ -23,6 +23,9 @@ import AddressesRepository from '@modules/addresses/infra/typeorm/repositories/A
 import ISearchAnimalRepository from '@modules/search_animals/repositories/ISearchAnimalRepository';
 import SearchAnimalRepository from '@modules/search_animals/infra/typeorm/repositories/SearchAnimalRepository';
 
+import IPicturesRepository from '@modules/pictures/repositories/IPicturesRepository';
+import PicturesRepository from '@modules/pictures/infra/typeorm/repositories/PicturesRepository';
+
 container.registerSingleton<IusersRepository>(
   'UsersRepository',
   UsersRepository,
@@ -57,4 +60,11 @@ container.registerSingleton<ISearchAnimalRepository>(
   'SearchAnimalRepository',
   SearchAnimalRepository,
 );
-container.registerSingleton<IFursRepository>('FurRepository', FursRepository);
+
+container.registerSingleton<IFursRepository>(
+  'FurRepository', FursRepository,
+);
+
+container.registerSingleton<IPicturesRepository>(
+  'PicturesRepository', PicturesRepository,
+)
