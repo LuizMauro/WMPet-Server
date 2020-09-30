@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { classToPlain } from 'class-transformer';
 import CreateContactsService from '@modules/contacts/services/CreateContactsService';
-import User from '@modules/users/infra/typeorm/entities/User';
 
 export default class ContactsController {
   public async create(request: Request, response: Response): Promise<Response> {

@@ -19,7 +19,9 @@ import FursRepository from '@modules/furs/infra/typeorm/repositories/FursReposit
 
 import IAddressesRepository from '@modules/addresses/repositories/IAddressesRepository';
 import AddressesRepository from '@modules/addresses/infra/typeorm/repositories/AddressesRepository';
-import Address from '@modules/addresses/infra/typeorm/entities/Addresses';
+
+import ISearchAnimalRepository from '@modules/search_animals/repositories/ISearchAnimalRepository';
+import SearchAnimalRepository from '@modules/search_animals/infra/typeorm/repositories/SearchAnimalRepository';
 
 container.registerSingleton<IusersRepository>(
   'UsersRepository',
@@ -51,4 +53,8 @@ container.registerSingleton<IAddressesRepository>(
   AddressesRepository,
 );
 
+container.registerSingleton<ISearchAnimalRepository>(
+  'SearchAnimalRepository',
+  SearchAnimalRepository,
+);
 container.registerSingleton<IFursRepository>('FurRepository', FursRepository);

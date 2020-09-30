@@ -8,6 +8,7 @@ import RacesRouter from '@modules/races/infra/http/routes/racesRoutes';
 import ContactRouter from '@modules/contacts/infra/http/routes/contactsRoutes';
 import FursRouter from '@modules/furs/infra/http/routes/fursRoutes';
 import AddressesRouter from '@modules/addresses/infra/http/routes/addressesRoutes';
+import SearchAnimalsRoutes from '@modules/search_animals/infra/http/routes/searchAnimalsRoutes';
 
 const routes = Router();
 
@@ -24,5 +25,7 @@ routes.use('/races', RacesRouter);
 routes.use('/furs', FursRouter);
 
 routes.use('/addresses', AddressesRouter);
+
+routes.use('/search-animals', SearchAnimalsRoutes);
 
 export default routes;

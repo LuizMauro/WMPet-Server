@@ -1,36 +1,40 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateAddAddress1601165378505
+export default class seaSearchAnimals1601498627299
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'add_address',
+        name: 'sea_search_animals',
         columns: [
           {
-            name: 'addID',
+            name: 'seaID',
             type: 'varchar',
             isPrimary: true,
             generationStrategy: 'uuid',
           },
           {
-            name: 'addCEP',
+            name: 'seaLongitude',
             type: 'varchar',
           },
           {
-            name: 'addStreet',
+            name: 'seaLatitude',
             type: 'varchar',
           },
           {
-            name: 'addDistrict',
+            name: 'seaStatus',
+            type: 'boolean',
+          },
+          {
+            name: 'seaDescription',
             type: 'varchar',
           },
           {
-            name: 'addCity',
+            name: 'seaReward',
             type: 'varchar',
           },
           {
-            name: 'addState',
+            name: 'aniID',
             type: 'varchar',
           },
           {
@@ -38,19 +42,32 @@ export default class CreateAddAddress1601165378505
             type: 'varchar',
           },
           {
-            name: 'addDateCreated',
+            name: 'seaEventDate',
+            type: 'timestamp',
+            isNullable: true,
+          },
+          {
+            name: 'seaDateCreated',
             type: 'timestamp',
             default: 'now()',
           },
           {
-            name: 'addDateUpdated',
+            name: 'seaDateUpdated',
             type: 'timestamp',
             default: 'now()',
           },
         ],
         foreignKeys: [
           {
-            name: 'ForeignUserAddress',
+            name: 'ForeignSeaAnimal',
+            columnNames: ['aniID'],
+            referencedTableName: 'ani_animals',
+            referencedColumnNames: ['aniID'],
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
+          },
+          {
+            name: 'ForeignSeaUser',
             columnNames: ['useID'],
             referencedTableName: 'use_users',
             referencedColumnNames: ['useID'],
@@ -63,6 +80,6 @@ export default class CreateAddAddress1601165378505
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('add_address');
+    await queryRunner.dropTable('sea_search_animals');
   }
 }
