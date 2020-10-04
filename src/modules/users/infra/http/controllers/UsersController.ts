@@ -20,6 +20,9 @@ export default class UsersController {
       usePassword,
       conDescription,
       conType,
+      useDeviceID,
+      useLatitude,
+      useLongitude,
     } = request.body;
 
     const createUser = container.resolve(CreateUserService);
@@ -30,6 +33,9 @@ export default class UsersController {
       usePasswordHash: usePassword,
       conDescription,
       conType,
+      useDeviceID,
+      useLatitude,
+      useLongitude,
     });
 
     return response.json(classToPlain(user));

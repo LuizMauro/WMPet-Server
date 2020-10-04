@@ -18,6 +18,15 @@ class User {
   @Column()
   useEmail: string;
 
+  @Column()
+  useLongitude: string;
+
+  @Column()
+  useLatitude: string;
+
+  @Column()
+  useDeviceID: string;
+
   @Exclude()
   @Column()
   usePasswordHash: string;
