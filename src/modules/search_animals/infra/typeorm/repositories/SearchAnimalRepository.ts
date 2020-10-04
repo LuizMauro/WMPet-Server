@@ -12,6 +12,30 @@ class SearchAnimalRepository implements ISearchAnimalRepository {
     this.ormRepository = getRepository(SearchAnimal);
   }
 
+  public async findByRange(
+    lng: number,
+    lat: number,
+  ): Promise<SearchAnimal[] | []> {
+    // lat = -22.8476202;
+    // lng = -45.3218702;
+
+    const searchAnimal = await this.ormRepository
+      .createQueryBuilder('sea_search_animals')
+      .addSelect('sea_search_animals.*')
+      .addSelect(
+        `( 6371 * acos( cos( radians(${lat}) ) * cos( radians( seaLatitude ) ) * cos( radians( seaLongitude ) - radians(${lng}) ) + sin( radians(${lat}) ) * sin( radians( seaLatitude ) ) ) )`,
+        'distance',
+      )
+      .innerJoinAndSelect('sea_search_animals.useID', 'Dono')
+      .innerJoinAndSelect('sea_search_animals.aniID', 'aniID')
+      .having('distance <= 10')
+      .orderBy('seaDateCreated')
+
+      .getMany();
+
+    return searchAnimal || [];
+  }
+
   public async findAll(): Promise<SearchAnimal[] | []> {
     const searchAnimal = await this.ormRepository.find();
 
