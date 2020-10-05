@@ -36,17 +36,17 @@ class UsersRepository implements IUsersRepository {
     useEmail,
     useName,
     usePasswordHash,
-    useDeviceID,
-    useLatitude,
-    useLongitude,
-  }: ICreateUserDTO): Promise<User> {
+  }: // useDeviceID,
+  // useLatitude,
+  // useLongitude,
+  ICreateUserDTO): Promise<User> {
     const user = this.ormRepository.create({
       useEmail,
       useName,
       usePasswordHash,
-      useDeviceID,
-      useLatitude,
-      useLongitude,
+      // useDeviceID,
+      // useLatitude,
+      // useLongitude,
     });
 
     await this.ormRepository.save(user);

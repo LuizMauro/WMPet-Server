@@ -11,11 +11,11 @@ interface IRequest {
   useName: string;
   useEmail: string;
   usePasswordHash: string;
-  conDescription: string;
-  conType: boolean;
-  useLongitude: string;
-  useLatitude: string;
-  useDeviceID: string;
+  // conDescription: string;
+  // conType: boolean;
+  // useLongitude: string;
+  // useLatitude: string;
+  // useDeviceID: string;
 }
 
 @injectable()
@@ -32,12 +32,12 @@ class CreateUserService {
     useName,
     useEmail,
     usePasswordHash,
-    conDescription,
-    conType,
-    useDeviceID,
-    useLatitude,
-    useLongitude,
-  }: IRequest): Promise<User> {
+  }: // conDescription,
+  // conType,
+  // useDeviceID,
+  // useLatitude,
+  // useLongitude,
+  IRequest): Promise<User> {
     const checkUserExists = await this.usersRepository.findByEmail(useEmail);
 
     if (checkUserExists) {
@@ -50,16 +50,16 @@ class CreateUserService {
       useName,
       useEmail,
       usePasswordHash: hashedPassword,
-      useDeviceID,
-      useLatitude,
-      useLongitude,
+      // useDeviceID,
+      // useLatitude,
+      // useLongitude,
     });
 
-    await this.contactRepository.create({
-      conDescription,
-      conType,
-      useID: user,
-    });
+    // await this.contactRepository.create({
+    //   conDescription,
+    //   conType,
+    //   useID: user,
+    // });
 
     return user;
   }
