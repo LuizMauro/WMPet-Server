@@ -6,4 +6,5 @@ export default interface IAnimalsRepository {
   findById(id: string): Promise<Animal | undefined>;
   create(data: ICreateAnimalsDTO): Promise<Animal>;
   save(animal: Animal): Promise<Animal>;
+  findByUser(userID: string): Promise<Animal[] | []>;
 }
