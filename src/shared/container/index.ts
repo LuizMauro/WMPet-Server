@@ -61,10 +61,9 @@ container.registerSingleton<ISearchAnimalRepository>(
   SearchAnimalRepository,
 );
 
-container.registerSingleton<IFursRepository>(
-  'FurRepository', FursRepository,
-);
+container.registerSingleton<IFursRepository>('FurRepository', FursRepository);
 
 container.registerSingleton<IPicturesRepository>(
-  'PicturesRepository', PicturesRepository,
-)
+  'PicturesRepository',
+  PicturesRepository,
+);

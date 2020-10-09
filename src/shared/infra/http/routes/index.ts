@@ -15,7 +15,9 @@ import PicturesRouter from '@modules/pictures/infra/http/routes/picturesRoutes';
 const routes = Router();
 
 routes.use('/users', usersRouter);
+
 routes.use('/session', sessionsRouter);
+
 routes.use('/contacts', ContactRouter);
 
 routes.use('/animals', AnimalsRouter);
