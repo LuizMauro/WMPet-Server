@@ -14,16 +14,7 @@ export default class UsersController {
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    const {
-      useName,
-      useEmail,
-      usePassword,
-      conDescription,
-      conType,
-      useDeviceID,
-      useLatitude,
-      useLongitude,
-    } = request.body;
+    const { useName, useEmail, usePassword } = request.body;
 
     const createUser = container.resolve(CreateUserService);
 
@@ -31,11 +22,6 @@ export default class UsersController {
       useName,
       useEmail,
       usePasswordHash: usePassword,
-      conDescription,
-      conType,
-      useDeviceID,
-      useLatitude,
-      useLongitude,
     });
 
     return response.json(classToPlain(user));

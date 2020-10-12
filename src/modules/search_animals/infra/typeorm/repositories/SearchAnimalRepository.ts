@@ -28,7 +28,7 @@ class SearchAnimalRepository implements ISearchAnimalRepository {
       )
       .innerJoinAndSelect('sea_search_animals.useID', 'Dono')
       .innerJoinAndSelect('sea_search_animals.aniID', 'aniID')
-      .having('distance <= 10')
+      .having('distance <= 3')
       .orderBy('seaDateCreated')
 
       .getMany();
