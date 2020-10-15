@@ -17,4 +17,6 @@ export default class ContactsController {
 
     return response.json(classToPlain(contacts));
   }
+
+  
 }
