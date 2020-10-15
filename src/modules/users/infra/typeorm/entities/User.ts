@@ -27,6 +27,9 @@ class User {
   @Column()
   useDeviceID: string;
 
+  @Column()
+  usePhoto: string;
+
   @Exclude()
   @Column()
   usePasswordHash: string;

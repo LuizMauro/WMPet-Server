@@ -9,5 +9,6 @@ const contactController = new ContactController();
 contactRouter.use(authenticated);
 
 contactRouter.post('/', contactController.create);
+// contactRouter.get('/', contactController.)
 
 export default contactRouter;
