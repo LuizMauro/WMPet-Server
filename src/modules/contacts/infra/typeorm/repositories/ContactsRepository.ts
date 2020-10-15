@@ -18,6 +18,12 @@ class ContactsRepository implements IContactsRepository {
     return contact;
   }
 
+  public async findByUser(userID: string): Promise<Contacts[] | []> {
+    const contact = await this.ormRepository.find({ where: { useID: userID } });
+
+    return contact || [];
+  }
+
   public async create({
     conDescription,
     conType,

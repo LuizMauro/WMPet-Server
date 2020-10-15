@@ -5,4 +5,5 @@ export default interface IContactsRepository {
   findById(id: string): Promise<Contact | undefined>;
   create(data: ICreateContactsDTO): Promise<Contact>;
   save(contact: Contact): Promise<Contact>;
+  findByUser(userID: string): Promise<Contact[] | []>;
 }
