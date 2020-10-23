@@ -11,7 +11,7 @@ class FindRangeService {
     private searchAnimalRepository: ISearchAnimalRepository,
   ) {}
 
-  public async execute(lng: number, lat: number): Promise<SearchAnimal[] | []> {
+  public async execute(lng: string, lat: string): Promise<SearchAnimal[] | []> {
     const searchAnimal = await this.searchAnimalRepository.findByRange(
       lng,
       lat,

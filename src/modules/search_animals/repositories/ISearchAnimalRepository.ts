@@ -2,7 +2,7 @@ import SearchAnimal from '../infra/typeorm/entities/SearchAnimal';
 import ICreateSearchAnimalsDTO from '../dtos/ICreateSearchAnimalsDTO';
 
 export default interface IUserRepository {
-  findByRange(lng: number, lat: number): Promise<SearchAnimal[] | []>;
+  findByRange(lng: string, lat: string): Promise<SearchAnimal[] | []>;
   findAll(): Promise<SearchAnimal[] | []>;
   findById(id: string): Promise<SearchAnimal | undefined>;
   findByEmail(email: string): Promise<SearchAnimal | undefined>;

@@ -13,8 +13,8 @@ class SearchAnimalRepository implements ISearchAnimalRepository {
   }
 
   public async findByRange(
-    lng: number,
-    lat: number,
+    lng: string,
+    lat: string,
   ): Promise<SearchAnimal[] | []> {
     // lat = -22.8476202;
     // lng = -45.3218702;
@@ -26,9 +26,8 @@ class SearchAnimalRepository implements ISearchAnimalRepository {
         `( 6371 * acos( cos( radians(${lat}) ) * cos( radians( seaLatitude ) ) * cos( radians( seaLongitude ) - radians(${lng}) ) + sin( radians(${lat}) ) * sin( radians( seaLatitude ) ) ) )`,
         'distance',
       )
-      .innerJoinAndSelect('sea_search_animals.useID', 'Dono')
-      .innerJoinAndSelect('sea_search_animals.aniID', 'aniID')
-      .having('distance <= 3')
+
+      .having('distance <= 2')
       .orderBy('seaDateCreated')
 
       .getMany();

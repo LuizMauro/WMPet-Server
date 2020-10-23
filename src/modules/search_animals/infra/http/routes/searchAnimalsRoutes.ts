@@ -12,5 +12,8 @@ searchAnimalRouter.use(authenticated);
 
 searchAnimalRouter.post('/', searchAnimalController.create);
 searchAnimalRouter.get('/', searchAnimalController.index);
-searchAnimalRouter.get('/range', getRangeSearchAnimalsController.index);
+searchAnimalRouter.get(
+  '/range/:lng/:lat',
+  getRangeSearchAnimalsController.index,
+);
 export default searchAnimalRouter;
