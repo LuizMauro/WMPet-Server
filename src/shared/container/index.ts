@@ -8,6 +8,7 @@ import AnimalsRepository from '@modules/animals/infra/typeorm/repositories/Anima
 
 import IColorsRepository from '@modules/colors/repositories/IColorsRepository';
 import ColorsRepository from '@modules/colors/infra/typeorm/repositories/ColorsRepository';
+
 import IContactsRepository from '@modules/contacts/repositories/IContactsRepository';
 import ContactsRepository from '@modules/contacts/infra/typeorm/repositories/ContactsRepository';
 
@@ -25,6 +26,9 @@ import SearchAnimalRepository from '@modules/search_animals/infra/typeorm/reposi
 
 import IPicturesRepository from '@modules/pictures/repositories/IPicturesRepository';
 import PicturesRepository from '@modules/pictures/infra/typeorm/repositories/PicturesRepository';
+
+import IPartnersRepository from '@modules/partners/repositories/IPartnersRepository';
+import PartnersRepository from '@modules/partners/infra/typeorm/repositories/PartnersRepository';
 
 container.registerSingleton<IusersRepository>(
   'UsersRepository',
@@ -66,4 +70,9 @@ container.registerSingleton<IFursRepository>('FurRepository', FursRepository);
 container.registerSingleton<IPicturesRepository>(
   'PicturesRepository',
   PicturesRepository,
+);
+
+container.registerSingleton<IPartnersRepository>(
+  'PartnersRepository',
+  PartnersRepository,
 );

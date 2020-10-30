@@ -9,7 +9,7 @@ import ContactRouter from '@modules/contacts/infra/http/routes/contactsRoutes';
 import FursRouter from '@modules/furs/infra/http/routes/fursRoutes';
 import AddressesRouter from '@modules/addresses/infra/http/routes/addressesRoutes';
 import SearchAnimalsRoutes from '@modules/search_animals/infra/http/routes/searchAnimalsRoutes';
-
+import PartnersRouter from '@modules/partners/infra/http/routes/partnersRoutes';
 import PicturesRouter from '@modules/pictures/infra/http/routes/picturesRoutes';
 
 const routes = Router();
@@ -33,5 +33,7 @@ routes.use('/addresses', AddressesRouter);
 routes.use('/search-animals', SearchAnimalsRoutes);
 
 routes.use('/pictures', PicturesRouter);
+
+routes.use('/partners', PartnersRouter);
 
 export default routes;

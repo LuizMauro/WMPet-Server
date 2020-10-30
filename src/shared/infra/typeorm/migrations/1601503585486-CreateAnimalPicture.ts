@@ -1,9 +1,7 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateAnimalPicture1601503585486
- implements MigrationInterface {
-    public async up(queryRunner: QueryRunner): Promise<void> {
-    
+export class CreateAnimalPicture1601503585486 implements MigrationInterface {
+  public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
         name: 'pic_pictures',
@@ -25,11 +23,11 @@ export class CreateAnimalPicture1601503585486
           {
             name: 'picPrimary',
             type: 'boolean',
-          },         
+          },
           {
             name: 'aniID',
             type: 'varchar',
-          },         
+          },
           {
             name: 'picDateCreated',
             type: 'timestamp',
@@ -50,13 +48,12 @@ export class CreateAnimalPicture1601503585486
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE',
           },
-          
         ],
       }),
     );
-    }
+  }
 
-    public async down(queryRunner: QueryRunner): Promise<void> {
-    }
-
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable('pic_pictures');
+  }
 }
