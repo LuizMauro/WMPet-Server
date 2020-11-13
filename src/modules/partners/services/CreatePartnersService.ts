@@ -13,6 +13,9 @@ interface IRequest {
   parDistrict: string;
   parCity: string;
   parState: string;
+  parLongitude: string;
+  parLatitude: string;
+  parStatus: number;
 }
 
 @injectable()
@@ -31,6 +34,9 @@ class CreatePartnersService {
     parPicture,
     parState,
     parStreet,
+    parLatitude,
+    parLongitude,
+    parStatus,
   }: IRequest): Promise<Partners> {
     const partners = await this.PartnersRepository.create({
       parCEP,
@@ -41,6 +47,9 @@ class CreatePartnersService {
       parPicture,
       parState,
       parStreet,
+      parLatitude,
+      parLongitude,
+      parStatus,
     });
 
     return partners;

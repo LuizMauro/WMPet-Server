@@ -7,4 +7,7 @@ export default interface ICreateAddressDTO {
   parDistrict: string;
   parCity: string;
   parState: string;
+  parLongitude: string;
+  parLatitude: string;
+  parStatus: number;
 }

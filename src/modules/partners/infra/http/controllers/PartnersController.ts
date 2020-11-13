@@ -22,6 +22,9 @@ export default class PartnerController {
       parDistrict,
       parCity,
       parState,
+      parLongitude,
+      parLatitude,
+      parStatus,
     } = request.body;
 
     const createPartners = container.resolve(CreatePartnersService);
@@ -35,6 +38,9 @@ export default class PartnerController {
       parName,
       parDistrict,
       parCity,
+      parLatitude,
+      parLongitude,
+      parStatus,
     });
 
     return response.json(classToPlain(partners));

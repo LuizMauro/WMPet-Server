@@ -35,6 +35,15 @@ class Partners {
   @Column()
   parState: string;
 
+  @Column()
+  parLongitude: string;
+
+  @Column()
+  parLatitude: string;
+
+  @Column()
+  parStatus: number;
+
   @CreateDateColumn()
   parDateCreated: Date;
 
