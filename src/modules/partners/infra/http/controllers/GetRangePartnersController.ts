@@ -11,7 +11,6 @@ export default class GetRangePartnersController {
 
     const partners = await findAllRangePartnersService.execute(lng, lat);
 
-    console.log('chamou');
     return response.json(classToPlain(partners));
   }
 }
