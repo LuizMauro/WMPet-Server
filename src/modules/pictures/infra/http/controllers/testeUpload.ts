@@ -12,10 +12,6 @@ export default class UserAvatarController {
       avatarFilename: request.file.filename,
     });
 
-    return response.json(
-      classToClass(
-        `https://wpet-images-facul.s3-sa-east-1.amazonaws.com/${photo}`,
-      ),
-    );
+    return response.json(classToClass(photo));
   }
 }
