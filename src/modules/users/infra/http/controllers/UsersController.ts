@@ -22,6 +22,7 @@ export default class UsersController {
       useName,
       useEmail,
       usePasswordHash: usePassword,
+      filename: request.file?.filename,
     });
 
     return response.json(classToPlain(user));

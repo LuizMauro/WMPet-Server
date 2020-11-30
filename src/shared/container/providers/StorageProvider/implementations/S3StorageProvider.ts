@@ -39,7 +39,9 @@ class S3StorageProvider implements IStorageProvider {
 
     await fs.promises.unlink(originalPath);
 
-    return file;
+    const pathFinalFile = process.env.ROTA_IMAGES_S3 + file;
+
+    return pathFinalFile;
   }
 
   public async deleteFile(file: string): Promise<void> {

@@ -14,7 +14,7 @@ const updateCoordinatesController = new UpdateCoordinatesController();
 const updateDeviceIDController = new UpdateDeviceIDController();
 const getRangeUsersController = new GetRangeUsersController();
 
-usersRouter.post('/', usersController.create);
+usersRouter.post('/', upload.single('photo-user'), usersController.create);
 usersRouter.get('/', usersController.index);
 usersRouter.put('/edit/coordinates/:useID', updateCoordinatesController.update);
 usersRouter.put('/edit/deviceid/:useID', updateDeviceIDController.update);
