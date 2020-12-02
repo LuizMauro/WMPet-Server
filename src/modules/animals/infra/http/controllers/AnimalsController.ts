@@ -24,6 +24,13 @@ export default class AnimalsController {
       furID,
     } = request.body;
 
+    const requestImages = request.files as Express.Multer.File[];
+
+    const images = requestImages.map(image => ({
+      ...image,
+      path: image.filename,
+    }));
+
     const createAnimals = container.resolve(CreateAnimalsService);
 
     const animal = await createAnimals.execute({
@@ -36,6 +43,9 @@ export default class AnimalsController {
       colID,
       racID,
       furID,
+      filename1: images[0]?.filename,
+      filename2: images[1]?.filename,
+      filename3: images[2]?.filename,
     });
 
     return response.json(classToPlain(animal));

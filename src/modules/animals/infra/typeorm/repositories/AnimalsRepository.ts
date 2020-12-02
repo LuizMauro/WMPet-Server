@@ -25,7 +25,7 @@ class AnimalsRepository implements IAnimalsRepository {
   }
 
   public async findByUser(userID: string): Promise<Animal[] | []> {
-    const animal = await this.ormRepository.find({ where: { userID: userID } });
+    const animal = await this.ormRepository.find({ where: { userID } });
 
     return animal || [];
   }
