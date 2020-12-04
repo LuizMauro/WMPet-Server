@@ -13,7 +13,7 @@ class AnimalsRepository implements IAnimalsRepository {
   }
 
   public async findAll(): Promise<Animal[] | []> {
-    const animal = await this.ormRepository.find();
+    const animal = await this.ormRepository.find({ relations: ['photos'] });
 
     return animal || [];
   }
@@ -25,7 +25,10 @@ class AnimalsRepository implements IAnimalsRepository {
   }
 
   public async findByUser(userID: string): Promise<Animal[] | []> {
-    const animal = await this.ormRepository.find({ where: { userID } });
+    const animal = await this.ormRepository.find({
+      where: { userID },
+      relations: ['photos'],
+    });
 
     return animal || [];
   }

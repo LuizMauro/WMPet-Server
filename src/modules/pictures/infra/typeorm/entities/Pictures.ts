@@ -23,8 +23,7 @@ class Pictures {
   @Column()
   picPrimary: boolean;
 
-
-  @ManyToOne(() => Animals, { eager: true })
+  @ManyToOne(() => Animals, { eager: false })
   @JoinColumn({ name: 'aniID' })
   aniID: Animals;
 
