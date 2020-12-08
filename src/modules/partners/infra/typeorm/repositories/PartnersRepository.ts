@@ -12,6 +12,12 @@ class PartnersRepository implements IPartnersRepository {
     this.ormRepository = getRepository(Partners);
   }
 
+  public async findById(id: string): Promise<Partners | undefined> {
+    const partners = await this.ormRepository.findOne({ where: { parID: id } });
+
+    return partners;
+  }
+
   public async findAll(): Promise<Partners[] | []> {
     const partners = await this.ormRepository.find();
 
@@ -68,7 +74,6 @@ class PartnersRepository implements IPartnersRepository {
 
       .having('distance <= 20')
       .orderBy('parDateCreated')
-
       .getMany();
 
     return partners || [];
