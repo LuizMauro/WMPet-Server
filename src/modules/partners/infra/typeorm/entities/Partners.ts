@@ -44,6 +44,12 @@ class Partners {
   @Column()
   parStatus: number;
 
+  @Column()
+  parDescription: string;
+
+  @Column()
+  parWhatsapp: string;
+
   @CreateDateColumn()
   parDateCreated: Date;
 

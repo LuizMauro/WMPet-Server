@@ -36,6 +36,8 @@ class PartnersRepository implements IPartnersRepository {
     parLatitude,
     parLongitude,
     parStatus,
+    parDescription,
+    parWhatsapp,
   }: ICreatePartnersDTO): Promise<Partners> {
     const partners = this.ormRepository.create({
       parCEP,
@@ -49,6 +51,8 @@ class PartnersRepository implements IPartnersRepository {
       parLatitude,
       parLongitude,
       parStatus,
+      parDescription,
+      parWhatsapp,
     });
 
     await this.ormRepository.save(partners);

@@ -1,4 +1,4 @@
-export default interface ICreateAddressDTO {
+export default interface ICreatePartnersDTO {
   parName: string;
   parCNPJ: string;
   parPicture: string;
@@ -9,5 +9,7 @@ export default interface ICreateAddressDTO {
   parState: string;
   parLongitude: string;
   parLatitude: string;
+  parDescription: string;
+  parWhatsapp: string;
   parStatus: number;
 }
