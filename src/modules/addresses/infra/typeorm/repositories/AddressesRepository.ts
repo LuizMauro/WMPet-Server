@@ -43,6 +43,14 @@ class AddressesRepository implements IAddressesRepository {
   public async save(address: Addresses): Promise<Addresses> {
     return this.ormRepository.save(address);
   }
+
+  public async findByUser(useID: string): Promise<Addresses[] | []> {
+    const address = await this.ormRepository.find({
+      where: { useID },
+    });
+
+    return address || [];
+  }
 }
 
 export default AddressesRepository;
