@@ -3,6 +3,7 @@ import { container } from 'tsyringe';
 import { classToPlain } from 'class-transformer';
 import CreateAnimalsService from '@modules/animals/services/CreateAnimalsService';
 import FindAllAnimalService from '@modules/animals/services/FindAllService';
+import FindAnimalID from '@modules/animals/services/FindByAnimalID';
 
 export default class AnimalsController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -47,6 +48,15 @@ export default class AnimalsController {
       filename2: images[1]?.filename,
       filename3: images[2]?.filename,
     });
+
+    return response.json(classToPlain(animal));
+  }
+
+  public async getId(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+    const findAnimalID = container.resolve(FindAnimalID);
+
+    const animal = await findAnimalID.execute({ aniID: id });
 
     return response.json(classToPlain(animal));
   }

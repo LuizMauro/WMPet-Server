@@ -70,6 +70,8 @@ class CreateAnimalsService {
     const race = await this.racesRepository.findById(racID);
     const fur = await this.fursRepository.findById(furID);
 
+    const tipoSpecie = aniSpecies === 'Cachorro';
+
     if (!user) {
       throw new AppError('User does not exists');
     }
@@ -91,7 +93,7 @@ class CreateAnimalsService {
       aniDescription,
       aniGenre,
       aniSize,
-      aniSpecies,
+      aniSpecies: tipoSpecie,
       userID: user,
       colID: color,
       racID: race,

@@ -19,7 +19,10 @@ class AnimalsRepository implements IAnimalsRepository {
   }
 
   public async findById(id: string): Promise<Animal | undefined> {
-    const animal = await this.ormRepository.findOne({ where: { aniID: id } });
+    const animal = await this.ormRepository.findOne({
+      where: { aniID: id },
+      relations: ['photos'],
+    });
 
     return animal;
   }

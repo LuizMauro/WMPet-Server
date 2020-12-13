@@ -10,11 +10,13 @@ const upload = multer(uploadConfig.multer);
 const animalsRouter = Router();
 const animalsController = new AnimalsController();
 const userAnimalsController = new UserAnimalsController();
+
 animalsRouter.use(authenticated);
 
 animalsRouter.post('/', upload.array('images'), animalsController.create);
 
 animalsRouter.get('/', animalsController.index);
+animalsRouter.get('/getAnimalID/:id', animalsController.getId);
 animalsRouter.get('/:id', userAnimalsController.index);
 
 export default animalsRouter;

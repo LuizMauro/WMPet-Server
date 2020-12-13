@@ -14,8 +14,9 @@ export default class GetRangeSearchAnimalsController {
 
     const message = 'Testando isso aqui';
     const title = 'Nova Notificação';
+    const data = { to: 'AnimalPerdidoNotificacao', animalID: '123' };
 
-    sendPushNotification({ users, title, message });
+    sendPushNotification({ users, title, message, data });
 
     return response.json(classToPlain(users));
   }
