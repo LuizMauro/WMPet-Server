@@ -5,18 +5,16 @@ import CreateContactsService from '@modules/contacts/services/CreateContactsServ
 
 export default class ContactsController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { conDescription, conType } = request.body;
+    const { conDescription, conType, useID } = request.body;
 
     const createContacts = container.resolve(CreateContactsService);
 
     const contacts = await createContacts.execute({
       conDescription,
       conType,
-      useID: request.user.useID,
+      useID,
     });
 
     return response.json(classToPlain(contacts));
   }
-
-  
 }

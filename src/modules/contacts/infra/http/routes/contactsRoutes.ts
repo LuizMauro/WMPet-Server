@@ -8,11 +8,10 @@ const contactRouter = Router();
 const contactController = new ContactController();
 const contactUserController = new ContactUserController();
 
-contactRouter.use(authenticated);
-
 contactRouter.post('/', contactController.create);
 // contactRouter.get('/', contactController.)
 
+contactRouter.use(authenticated);
 contactRouter.get('/:id', contactUserController.index);
 
 export default contactRouter;

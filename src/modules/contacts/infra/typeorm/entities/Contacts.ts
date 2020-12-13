@@ -20,7 +20,7 @@ class Contacts {
   @Column()
   conType: boolean;
 
-  @ManyToOne(() => User, { eager: true })
+  @ManyToOne(() => User, { eager: false })
   @JoinColumn({ name: 'useID' })
   useID: User;
 

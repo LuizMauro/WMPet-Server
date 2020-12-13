@@ -12,9 +12,12 @@ export default class GetRangeSearchAnimalsController {
     const findRangeService = container.resolve(FindRangeService);
     const users = await findRangeService.execute(lng, lat);
 
-    const message = 'Testando isso aqui';
-    const title = 'Nova Notificação';
-    const data = { to: 'AnimalPerdidoNotificacao', animalID: '123' };
+    const message = 'Ajude a encontrar esse pet!';
+    const title = 'Pet perdido :(';
+    const data = {
+      to: 'AnimalPerdidoNotificacao',
+      animalID: '60e48f26-ec65-44b8-aa43-63cd7e0bdcd5',
+    };
 
     sendPushNotification({ users, title, message, data });
 

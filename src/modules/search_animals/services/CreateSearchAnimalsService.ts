@@ -1,9 +1,11 @@
-import { injectable, inject } from 'tsyringe';
+import { injectable, inject, container } from 'tsyringe';
 
 import AppError from '@shared/errors/AppErros';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import IAnimalsRepository from '@modules/animals/repositories/IAnimalsRepository';
 import ISearchAnimalRepository from '@modules/search_animals/repositories/ISearchAnimalRepository';
+import FindRangeService from '@modules/users/services/FindRangeService';
+import { sendPushNotification } from '@shared/notifications/PushNotifications';
 import SearchAnimal from '../infra/typeorm/entities/SearchAnimal';
 
 interface IRequest {
@@ -61,6 +63,22 @@ class CreateSearchAnimalsService {
       aniID: animal,
       useID: user,
     });
+
+    const findRangeService = container.resolve(FindRangeService);
+
+    const lng = parseFloat(seaLongitude);
+    const lat = parseFloat(seaLatitude);
+
+    const users = await findRangeService.execute(lng, lat);
+
+    const message = 'Ajude a encontrar esse pet!';
+    const title = 'Pet perdido :(';
+    const data = {
+      to: 'AnimalPerdidoNotificacao',
+      animalID: searchAnimal.seaID,
+    };
+
+    sendPushNotification({ users, title, message, data });
 
     return searchAnimal;
   }

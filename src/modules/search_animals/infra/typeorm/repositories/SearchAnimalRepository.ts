@@ -43,7 +43,8 @@ class SearchAnimalRepository implements ISearchAnimalRepository {
 
   public async findById(id: string): Promise<SearchAnimal | undefined> {
     const searchAnimal = await this.ormRepository.findOne({
-      where: { useID: id },
+      where: { seaID: id },
+      relations: ['photos'],
     });
 
     return searchAnimal;

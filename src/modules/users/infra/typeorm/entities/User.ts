@@ -4,8 +4,11 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
+
+import Contacts from '@modules/contacts/infra/typeorm/entities/Contacts';
 
 @Entity('use_users')
 class User {
@@ -29,6 +32,9 @@ class User {
 
   @Column()
   usePhoto: string;
+
+  @OneToMany(() => Contacts, contact => contact.useID)
+  contacts: Contacts[];
 
   @Exclude()
   @Column()

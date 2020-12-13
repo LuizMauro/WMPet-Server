@@ -4,6 +4,7 @@ import { classToPlain } from 'class-transformer';
 
 import CreateSearchAnimalsService from '@modules/search_animals/services/CreateSearchAnimalsService';
 import FindAllSearchAnimalsService from '@modules/search_animals/services/FindAllService';
+import FindBydID from '@modules/search_animals/services/FindById';
 
 export default class SearchAnimalsController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -42,5 +43,15 @@ export default class SearchAnimalsController {
     });
 
     return response.json(classToPlain(searchAnimal));
+  }
+
+  public async getId(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const findAnimal = container.resolve(FindBydID);
+
+    const animal = await findAnimal.execute(id);
+
+    return response.json(classToPlain(animal));
   }
 }

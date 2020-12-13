@@ -3,13 +3,11 @@ import { injectable, inject } from 'tsyringe';
 import IContactsRepository from '@modules/contacts/repositories/IContactsRepository';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 
-
+import AppError from '@shared/errors/AppErros';
 import Contacts from '../infra/typeorm/entities/Contacts';
 
-import AppError from '@shared/errors/AppErros';
-
 interface IRequest {
-    useID: string;
+  useID: string;
 }
 
 @injectable()
@@ -22,13 +20,13 @@ class findByUserIDService {
     private usersRepository: IUsersRepository,
   ) {}
 
-  public async execute({useID} : IRequest): Promise<Contacts[]> {
+  public async execute({ useID }: IRequest): Promise<Contacts[]> {
     const user = await this.usersRepository.findById(useID);
-    
+
     if (!user) {
-        throw new AppError('User not found.');
+      throw new AppError('User not found.');
     }
-    
+
     const contacts = await this.ContactsRepository.findByUser(user.useID);
 
     return contacts;
