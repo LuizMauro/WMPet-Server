@@ -42,11 +42,7 @@ Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
 
 ##
 
-Fernando Sampaio – [@FernandoSampaio](https://twitter.com/...) – SeuEmail@exemplo.com
 
-Distribuído sob a licença XYZ. Veja `LICENSE` para mais informações.
-
-[https://github.com/yourname/github-link](https://github.com/othonalberto/)
 
 <!-- ## Contributing
 
